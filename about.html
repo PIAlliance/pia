@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIA政治爱好同盟 - 关于我们</title>
+    <meta name="description" content="PIA政治爱好同盟的社区规则、联系方式与免责声明">
+    <meta name="keywords" content="PIA, 政治爱好同盟, 社区规则, 联系我们, 免责声明">
+    <style>
+        /* 全局基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans SC", "微软雅黑", "Consolas", monospace;
+            scroll-behavior: smooth;
+            letter-spacing: 0.2px;
+        }
+
+        html {
+            background: #0a0a0f;
+            color-scheme: dark;
+        }
+
+        body {
+            background: #0f0f17;
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Logo样式 */
+        .tno-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tno-logo-svg {
+            width: 48px;
+            height: 48px;
+            fill: #4ae8b8;
+            filter: drop-shadow(0 0 8px rgba(74, 232, 184, 0.4));
+        }
+
+        .tno-logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #4ae8b8;
+            text-shadow: 0 0 10px rgba(74, 232, 184, 0.3);
+            position: relative;
+        }
+
+        .tno-logo-text::after {
+            content: "政治爱好同盟";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #999;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .tno-logo:hover {
+            transform: scale(1.02);
+        }
+
+        /* 顶部导航栏 */
+        .top-bar {
+            background: #12121a;
+            border-bottom: 2px solid #2b8268;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 搜索功能 */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 50%;
+        }
+
+        .search-label {
+            color: #4ae8b8;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: #181826;
+            border: 1px solid #2b8268;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4ae8b8;
+            box-shadow: 0 0 10px rgba(74, 232, 184, 0.2);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #181826;
+            border: 1px solid #2b8268;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 999;
+            display: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .search-suggestions::-webkit-scrollbar {
+            display: none;
+        }
+
+        .search-suggestion-item {
+            padding: 0.8rem 1.2rem;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .search-suggestion-item:hover {
+            background: #2b8268;
+            color: #0a0a0f;
+        }
+
+        .search-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #2b8268, #4ae8b8);
+            border: none;
+            border-radius: 4px;
+            color: #0a0a0f;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(74, 232, 184, 0.3);
+        }
+
+        /* 用户功能区 */
+        .user-actions {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .user-action-link {
+            color: #4ae8b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .user-action-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* 主容器 - 三栏布局 */
+        .main-container {
+            display: grid;
+            grid-template-columns: 280px 1fr 320px;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* 左侧导航 */
+        .sidebar-left {
+            background: #12121a;
+            border: 1px solid #2b8268;
+            border-radius: 4px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 8rem;
+            max-height: calc(100vh - 9rem);
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .sidebar-left::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar-title {
+            color: #4ae8b8;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #2b8268;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-nav-link {
+            color: #d0d0d0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .sidebar-nav-link.has-subnav::after {
+            content: "▶";
+            position: absolute;
+            right: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            color: #4ae8b8;
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-nav-link.has-subnav.expanded::after {
+            transform: translateY(-50%) rotate(90deg) scale(0.7);
+        }
+
+        .sidebar-nav-link:hover, .sidebar-nav-link.active {
+            background: #181826;
+            color: #4ae8b8;
+            border-left: 3px solid #4ae8b8;
+            padding-left: 1rem;
+        }
+
+        .sidebar-subnav {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .sidebar-subnav.expanded {
+            display: block;
+        }
+
+        /* 中间内容区 */
+        .content-area {
+            background: #12121a;
+            border: 1px solid #2b8268;
+            border-radius: 4px;
+            padding: 2.5rem;
+            line-height: 1.9;
+        }
+
+        .page-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #2b8268;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 1.2rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section-title {
+            font-size: 1.8rem;
+            color: #4ae8b8;
+            margin-bottom: 1.5rem;
+            padding-left: 0.8rem;
+            border-left: 4px solid #4ae8b8;
+        }
+
+        .content-subtitle {
+            font-size: 1.4rem;
+            color: #82e0c8;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #2b8268;
+        }
+
+        .content-paragraph {
+            margin-bottom: 1.5rem;
+            color: #e0e0e0;
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        /* 关于我们特有样式 */
+        .rules-list {
+            list-style: decimal;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .rules-list-item {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-card {
+            background: #181826;
+            border: 1px solid #2b8268;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #2b8268;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0f;
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-title {
+            color: #4ae8b8;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        /* 右侧信息栏 */
+        .sidebar-right {
+            background: #12121a;
+            border: 1px solid #2b8268;
+            border-radius: 4px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 8rem;
+            max-height: calc(100vh - 9rem);
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .sidebar-right::-webkit-scrollbar {
+            display: none;
+        }
+
+        .info-card {
+            margin-bottom: 2rem;
+        }
+
+        .info-card-title {
+            color: #4ae8b8;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #2b8268;
+        }
+
+        .info-card-content {
+            font-size: 0.95rem;
+            color: #d0d0d0;
+        }
+
+        .info-stat-list {
+            list-style: none;
+        }
+
+        .info-stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #2b8268;
+        }
+
+        .info-stat-label {
+            color: #d0d0d0;
+        }
+
+        .info-stat-value {
+            color: #4ae8b8;
+            font-weight: 600;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #12121a;
+            border-top: 2px solid #2b8268;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #999;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-disclaimer {
+            color: #4ae8b8;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.8;
+            max-width: 1200px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #4ae8b8;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1400px) {
+            .main-container {
+                grid-template-columns: 260px 1fr;
+            }
+            .sidebar-right {
+                display: none;
+            }
+            .search-container {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .sidebar-left {
+                position: static;
+                margin-bottom: 2rem;
+                max-height: none;
+            }
+            .top-bar {
+                flex-wrap: wrap;
+                padding: 1rem;
+            }
+            .search-container {
+                width: 100%;
+                order: 3;
+                margin-top: 1rem;
+            }
+            .page-title {
+                font-size: 2rem;
+            }
+            .content-area {
+                padding: 1.5rem;
+            }
+            .contact-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="top-bar">
+        <a href="index.html" class="tno-logo">
+            <svg class="tno-logo-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                <text x="8" y="16" font-size="12" font-weight="900" fill="#0a0a0f">PIA</text>
+            </svg>
+            <span class="tno-logo-text">PIA政治爱好同盟</span>
+        </a>
+
+        <!-- 搜索功能 -->
+        <div class="search-container">
+            <span class="search-label">全站搜索</span>
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="输入关键词搜索...">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            <button class="search-btn" id="searchBtn">搜索</button>
+        </div>
+
+        <!-- 用户功能 -->
+        <div class="user-actions">
+            <a href="#register" class="user-action-link">注册</a>
+            <a href="#login" class="user-action-link">登录</a>
+            <a href="#edit" class="user-action-link">编辑</a>
+        </div>
+    </header>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧导航 -->
+        <aside class="sidebar-left">
+            <h3 class="sidebar-title">导航菜单</h3>
+            <ul class="sidebar-nav" id="sidebarNav">
+                <li class="sidebar-nav-item">
+                    <a href="index.html" class="sidebar-nav-link nav-link">主页</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="worldview.html" class="sidebar-nav-link nav-link has-subnav">同盟理念</a>
+                    <ul class="sidebar-subnav">
+                        <li class="sidebar-nav-item"><a href="worldview.html#timeline" class="sidebar-nav-link nav-link">发展历程</a></li>
+                        <li class="sidebar-nav-item"><a href="worldview.html#geopolitics" class="sidebar-nav-link nav-link">核心主张</a></li>
+                        <li class="sidebar-nav-item"><a href="worldview.html#lore" class="sidebar-nav-link nav-link">价值观</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="factions.html" class="sidebar-nav-link nav-link has-subnav">组织架构</a>
+                    <ul class="sidebar-subnav">
+                        <li class="sidebar-nav-item"><a href="factions.html#management" class="sidebar-nav-link nav-link">管理团队</a></li>
+                        <li class="sidebar-nav-item"><a href="factions.html#departments" class="sidebar-nav-link nav-link">职能部门</a></li>
+                        <li class="sidebar-nav-item"><a href="factions.html#members" class="sidebar-nav-link nav-link">成员体系</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="gameplay.html" class="sidebar-nav-link nav-link has-subnav">活动体系</a>
+                    <ul class="sidebar-subnav">
+                        <li class="sidebar-nav-item"><a href="gameplay.html#online" class="sidebar-nav-link nav-link">线上研讨</a></li>
+                        <li class="sidebar-nav-item"><a href="gameplay.html#offline" class="sidebar-nav-link nav-link">线下交流</a></li>
+                        <li class="sidebar-nav-item"><a href="gameplay.html#competitions" class="sidebar-nav-link nav-link">主题竞赛</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="community.html" class="sidebar-nav-link nav-link has-subnav">社区互动</a>
+                    <ul class="sidebar-subnav">
+                        <li class="sidebar-nav-item"><a href="community.html#forum" class="sidebar-nav-link nav-link">讨论论坛</a></li>
+                        <li class="sidebar-nav-item"><a href="community.html#resources" class="sidebar-nav-link nav-link">资源分享</a></li>
+                        <li class="sidebar-nav-item"><a href="community.html#feedback" class="sidebar-nav-link nav-link">意见反馈</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="about.html" class="sidebar-nav-link nav-link has-subnav active">关于我们</a>
+                    <ul class="sidebar-subnav expanded">
+                        <li class="sidebar-nav-item"><a href="about.html#rules" class="sidebar-nav-link nav-link">社区规则</a></li>
+                        <li class="sidebar-nav-item"><a href="about.html#contact" class="sidebar-nav-link nav-link">联系我们</a></li>
+                        <li class="sidebar-nav-item"><a href="about.html#disclaimer" class="sidebar-nav-link nav-link">免责声明</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- 中间内容区 -->
+        <main class="content-area">
+            <div id="about" class="anchor-section">
+                <div class="page-header">
+                    <h1 class="page-title">关于我们</h1>
+                    <p class="page-subtitle">PIA政治爱好同盟的运营规则与联系方式</p>
+                </div>
+
+                <!-- 社区规则子锚点 -->
+                <div id="rules" class="anchor-section">
+                    <section class="content-section">
+                        <h2 class="content-section-title">社区规则</h2>
+                        <h3 class="content-subtitle">核心准则</h3>
+                        <ul class="rules-list">
+                            <li class="content-paragraph" style="color: red;">
+                                <strong>理性の交流</strong>：所有讨论需基于客观事实，尊重不同观点，禁止人身攻击、辱骂、歧视等不文明行为。
+                            </li>
+                            <li class="rules-list-item">
+                                <strong>合规の讨论</strong>：严格遵守国家法律法规及相关政策，禁止讨论敏感政治话题、传播不实信息。
+                            </li>
+                            <li class="rules-list-item">
+                                <strong>内容の原创</strong>：鼓励原创观点分享，引用他人内容需注明来源，禁止抄袭、搬运无授权内容。
+                            </li>
+                            <li class="rules-list-item">
+                                <strong>文明の发言</strong>：禁止使用粗俗、攻击性语言，禁止发布广告、无关链接等垃圾信息。
+                            </li>
+                            <li class="rules-list-item">
+                                <strong>尊重の隐私</strong>：禁止泄露他人个人信息（联系方式、住址、照片等），保护成员隐私安全。
+                            </li>
+                            <li class="content-paragraph" style="color: red;">
+                                <strong>警告</strong>：本站不对任何政治立场及意识形态抱有偏见，但有些意识形态大家都知道上不了台面，请不要在本站宣传极端思想！！！否则本站有权删除你的言论！！！本站对成员发表的不当言论不负任何责任！！！
+                            </li>
+                        </ul>
+                        <h3 class="content-subtitle">违规处理</h3>
+                        <p class="content-paragraph">
+                            首次违规：警告并删除违规内容，要求整改；<br>
+                            二次违规：限制发言权限7-15天；<br>
+                            三次违规：永久封禁账号，移出同盟社群；<br>
+                            严重违规（如违法、恶意攻击）：立即永久封禁，并保留追究法律责任的权利。
+                        </p>
+                    </section>
+                </div>
+
+                <!-- 联系我们子锚点 -->
+                <div id="contact" class="anchor-section">
+                    <section class="content-section">
+                        <h2 class="content-section-title">联系我们</h2>
+                        <div class="contact-card">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-info">
+                                <h3 class="contact-title">官方邮箱</h3>
+                                <p class="contact-value">wsgz2026@outlook.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-info">
+                                <h3 class="contact-title">官方QQ群</h3>
+                                <p class="contact-value">暂无（需验证加入）</p>
+                            </div>
+                        </div>
+                        <p class="content-paragraph">
+                            工作时间：周一至周日 21:00-22:00（法定节假日除外）<br>
+                            回复时效：一般问题24小时内回复，复杂问题3个工作日内回复
+                        </p>
+                    </section>
+                </div>
+
+                <!-- 免责声明子锚点 -->
+                <div id="disclaimer" class="anchor-section">
+                    <section class="content-section">
+                        <h2 class="content-section-title">免责声明</h2>
+                        <p class="content-paragraph" style="color: red;">
+                            1. PIA政治爱好同盟仅为政治爱好者交流平台，所有成员发表的观点仅代表个人，不代表本同盟的立场和观点。
+                        </p>
+                        <p class="content-paragraph" style="color: red;">
+                            2. 本同盟仅提供交流场所，不对成员发布内容的真实性、准确性、合法性承担任何责任，内容发布者需自行承担相应法律责任。
+                        </p>
+                        <p class="content-paragraph" style="color: red;">
+                            3. 因使用本平台导致的任何直接或间接损失，本同盟不承担赔偿责任；成员需自行判断内容风险，谨慎参考。
+                        </p>
+                        <p class="content-paragraph" style="color: red;">
+                            4. 本同盟有权根据法律法规、社区规则调整运营策略，修改相关条款，修改后的条款将在网站公示，继续使用视为认可。
+                        </p>
+                        <p class="content-paragraph" style="color: red;">
+                            5. 加入本同盟即视为已阅读并同意本免责声明及社区规则，如有异议请勿使用本平台服务。
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧信息栏 -->
+        <aside class="sidebar-right">
+            <div class="info-card">
+                <h3 class="info-card-title">同盟信息</h3>
+                <div class="info-card-content">
+                    <ul class="info-stat-list">
+                        <li class="info-stat-item">
+                            <span class="info-stat-label">成立时间</span>
+                            <span class="info-stat-value">2026年1月28日</span>
+                        </li>
+                        <li class="info-stat-item">
+                            <span class="info-stat-label">核心宗旨</span>
+                            <span class="info-stat-value">理性交流 客观探讨</span>
+                        </li>
+                        <li class="info-stat-item">
+                            <span class="info-stat-label">成员规模</span>
+                            <span class="info-stat-value">1（截至2026年1月28日）</span>
+                        </li>
+                        <li class="info-stat-item">
+                            <span class="info-stat-label">运营主体</span>
+                            <span class="info-stat-value">PIA管理团队</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p class="footer-text">PIA政治爱好同盟 © 2026 版权所有</p>
+        <p class="footer-disclaimer">本社区仅为政治爱好者交流平台，不代表任何政治立场，所有讨论内容仅代表个人观点</p>
+        <div class="footer-links">
+            <a href="about.html#rules" class="footer-link">社区规则</a>
+            <a href="about.html#contact" class="footer-link">联系我们</a>
+            <a href="about.html#disclaimer" class="footer-link">免责声明</a>
+        </div>
+    </footer>
+
+    <!-- 引入通用脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
